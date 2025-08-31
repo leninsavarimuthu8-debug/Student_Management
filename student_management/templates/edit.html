@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Edit Marks for Student ID: {{ student_id }}</h2>
+    
+    <form action="{{ url_for('edit_update') }}" method="POST">  <!-- Changed to edit_update -->
+        <!-- Pass the student_id to the POST request -->
+        <input type="hidden" name="student_id" value="{{ student_id }}">
+        
+        <div class="mb-3">
+            <label class="form-label">Tamil</label>
+            <input type="number" class="form-control" name="tamil" value="{{ current_marks[0] if current_marks else '' }}" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">English</label>
+            <input type="number" class="form-control" name="english" value="{{ current_marks[1] if current_marks else '' }}" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Maths</label>
+            <input type="number" class="form-control" name="maths" value="{{ current_marks[2] if current_marks else '' }}" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Grade</label>
+            <input type="text" class="form-control" name="grade" value="{{ current_marks[3] if current_marks else '' }}" required>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Update Marks</button>
+        <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

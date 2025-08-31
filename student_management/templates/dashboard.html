@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <!-- <span class="navbar-brand mb-0 h1">Movies Wishlist</span> -->
+        <a href="{{ url_for('logout') }}" class="btn btn-outline-danger">Logout</a>
+    </div>
+</nav>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Tamil</th>
+      <th scope="col">English</th>
+      <th scope="col">Mark</th>
+      <th scope="col">Grade</th>
+      <th scope="col">Actions</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    {% for data in data %}
+    <tr>
+      <td>{{ data[0]}} </td>
+      <td>{{ data[5]}} </td>
+      <td>{{ data[1]}} </td>
+      <td>{{ data[2]}} </td>
+      <td>{{ data[3]}} </td>
+      <td>{{ data[4]}} </td>
+      <td>
+        <a href="{{ url_for('edit_form', student_id=data[0]) }}" class="btn btn-sm btn-outline-primary">Edit</a> |
+        <form action="{{ url_for('delete') }}" method="POST" style="display: inline;">
+          <input type="hidden" name="student_id" value="{{ data[0] }}">
+          <button type="submit" class="btn btn-link p-0" style="color: red; text-decoration: none;">Delete</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

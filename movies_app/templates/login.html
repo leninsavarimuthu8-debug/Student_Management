@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">Movies Wishlist</span>
+        <a href="{{ url_for('register') }}" class="btn btn-outline-danger">Register</a>
+    </div>
+    
+    </nav>
+    <h2>Login</h2>
+    <form action="/login" method="POST">
+        <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input type="text" class="form-control" name="username" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>
+{% endblock %}
