@@ -1,34 +1,49 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container mt-4">
-
-    <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid"> 
-            <span class="navbar-brand mb-2 h2"></span> 
-            <a href="{{ url_for('login') }}"  class="btn btn-outline-danger">Login</a>
-        </div> 
-    </nav>
-
-    <form action="/register" method="POST">
-        <div class="mb-3">
-            <label class="form-label">Username</label>
-            <input type="text" class="form-control" name="username" required>
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 60vh;">
+    <div class="card shadow-lg p-4 rounded" style="width: 420px;">
+        <!-- Header -->
+        <div class="text-center mb-4">
+            <h3 class="fw-bold text-primary">Create an Account</h3>
+            <p class="text-muted">Please fill in the details to register</p>
         </div>
-        <div class="mb-3">
-            <label class="form-label">Password</label>
-            <input type="password" class="form-control" name="password" required>
-        </div>
-        <div class="mb-3">
-            <label for="validationCustom04" class="form-label">Role</label>
-            <select class="form-select" name="role" required>
-                <option selected disabled value="">Choose...</option>
-                <option value="teacher">Teacher</option>
-                <option value="student">Student</option>
-            </select>
-        </div>
-        <button type="submit" class="btn btn-primary">Register</button>
-    </form>
 
+        <!-- Registration Form -->
+        <form action="/register" method="POST" novalidate>
+            <!-- Username -->
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Username</label>
+                <input type="text" class="form-control" name="username" placeholder="Enter your username" required>
+            </div>
+
+            <!-- Password -->
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Password</label>
+                <input type="password" class="form-control" name="password" placeholder="Enter your password" required>
+            </div>
+
+            <!-- Role Selection -->
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Role</label>
+                <select class="form-select" name="role" required>
+                    <option selected disabled value="">Select your role</option>
+                    <option value="teacher">Teacher</option>
+                    <option value="student">Student</option>
+                </select>
+            </div>
+
+            <!-- Register Button -->
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary btn-lg">Register</button>
+            </div>
+        </form>
+
+        <!-- Login Redirect -->
+        <div class="text-center mt-3">
+            <small class="text-muted">Already have an account?</small><br>
+            <a href="{{ url_for('login') }}" class="btn btn-outline-danger btn-sm mt-2">Login</a>
+        </div>
+    </div>
 </div>
 {% endblock %}
